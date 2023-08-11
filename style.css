@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inconsolata", monospace;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 50px;
+  margin-bottom: 20px;
+  font-weight: 800;
+  color: white;
+}
+
+#timer-label {
+  font-size: 30px;
+}
+
+#time-left {
+  font-size: 90px;
+  margin: 30px;
+  font-weight: 800;
+  color: rgb(4, 209, 209);
+}
+
+.time-changer-container {
+  display: flex;
+  justify-content: space-around;
+  width: 80vw;
+  text-align: center;
+  font-size: 20px;
+}
+
+.length-settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.countdown-time {
+  padding: 8px 10px;
+  font-size: 20px;
+}
+
+/* BUTTONS STYLES */
+
+.up-down-btn {
+  padding: 0.2rem 0.8rem;
+  border-radius: 5px;
+  background-color: #a4a9a9;
+  border: 0 solid #e5e7eb;
+}
+
+.up-down-btn:hover {
+  background-color: rgb(4, 209, 209);
+  color: white;
+}
+
+.up-down-btn:active {
+  transform: scale(0.95);
+}
