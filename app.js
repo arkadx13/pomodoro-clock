@@ -4,11 +4,23 @@ function App() {
   const [onSession, setOnSession] = React.useState(true);
   const [timer, setTimer] = React.useState(25);
 
+  const timeFormat = (timer) => {
+    let timerInSeconds = timer * 60;
+    let minutes = Math.floor(timerInSeconds / 60);
+    let seconds = timerInSeconds % 60;
+
+    return (
+      (minutes < 10 ? "0" + minutes : minutes) +
+      ":" +
+      (seconds < 10 ? "0" + seconds : seconds)
+    );
+  };
+
   return (
     <div className="app">
       <h1 className="title">25 + 5 Clock</h1>
       <div id="timer-label">{onSession ? `"SESSION"` : `"BREAK"`}</div>
-      <div id="time-left">{timer}</div>
+      <div id="time-left">{timeFormat(timer)}</div>
       <div className="time-changer-container">
         <ChangeTimer
           label="Break Length"
