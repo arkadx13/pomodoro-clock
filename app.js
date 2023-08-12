@@ -2,7 +2,8 @@ function App() {
   const [breakTime, setBreakTime] = React.useState(5);
   const [sessionTime, setSessionTime] = React.useState(25);
   const [onSession, setOnSession] = React.useState(true);
-  const [timer, setTimer] = React.useState(25);
+  const [running, setRunning] = React.useState(false);
+  const [timer, setTimer] = React.useState(sessionTime);
 
   const timeFormat = (timer) => {
     let timerInSeconds = timer * 60;
@@ -22,14 +23,26 @@ function App() {
         setBreakTime((prev) => (prev >= 59 ? prev : prev + 1));
       } else if (id === "session-increment") {
         setSessionTime((prev) => (prev >= 59 ? prev : prev + 1));
+        setTimer(sessionTime < 59 ? sessionTime + 1 : sessionTime);
       }
     } else if (change === "down") {
       if (id === "break-decrement") {
         setBreakTime((prev) => (prev <= 1 ? prev : prev - 1));
       } else if (id === "session-decrement") {
         setSessionTime((prev) => (prev <= 1 ? prev : prev - 1));
+        setTimer(sessionTime > 1 ? sessionTime - 1 : sessionTime);
       }
     }
+  };
+
+  const play = () => {};
+
+  const stop = () => {};
+  const reset = () => {
+    setRunning(false);
+    setBreakTime(5);
+    setSessionTime(25);
+    setTimer(25);
   };
 
   return (
@@ -37,6 +50,21 @@ function App() {
       <h1 className="title">25 + 5 Clock</h1>
       <div id="timer-label">{onSession ? `"SESSION"` : `"BREAK"`}</div>
       <div id="time-left">{timeFormat(timer)}</div>
+      <div className="control">
+        <div id="start_stop">
+          {running ? (
+            <i className="fa-solid fa-stop" onClick={stop}></i>
+          ) : (
+            <i className="fa-solid fa-play" onClick={play}></i>
+          )}
+        </div>
+
+        <i
+          className="fa-solid fa-clock-rotate-left"
+          id="reset"
+          onClick={reset}
+        ></i>
+      </div>
       <div className="time-changer-container">
         <ChangeTimer
           label="Break Length"
