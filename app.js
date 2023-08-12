@@ -4,6 +4,7 @@ function App() {
   const [onSession, setOnSession] = React.useState(true);
   const [running, setRunning] = React.useState(false);
   const [timer, setTimer] = React.useState(sessionTime);
+  const audio = document.getElementById("beep");
 
   const timeFormat = (timer) => {
     let timerInSeconds = timer * 60;
