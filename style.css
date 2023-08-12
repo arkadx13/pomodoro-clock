@@ -20,6 +20,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-width: 480px;
 }
 
 .title {
@@ -46,6 +47,7 @@
   width: 80vw;
   text-align: center;
   font-size: 20px;
+  min-width: 350px;
 }
 
 .length-settings {
