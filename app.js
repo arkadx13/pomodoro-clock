@@ -16,6 +16,22 @@ function App() {
     );
   };
 
+  const changeLength = (change, id) => {
+    if (change === "up") {
+      if (id === "break-increment") {
+        setBreakTime((prev) => (prev >= 59 ? prev : prev + 1));
+      } else if (id === "session-increment") {
+        setSessionTime((prev) => (prev >= 59 ? prev : prev + 1));
+      }
+    } else if (change === "down") {
+      if (id === "break-decrement") {
+        setBreakTime((prev) => (prev <= 1 ? prev : prev - 1));
+      } else if (id === "session-decrement") {
+        setSessionTime((prev) => (prev <= 1 ? prev : prev - 1));
+      }
+    }
+  };
+
   return (
     <div className="app">
       <h1 className="title">25 + 5 Clock</h1>
@@ -29,6 +45,7 @@ function App() {
           incrementId="break-increment"
           lengthId="break-length"
           timeLength={breakTime}
+          changeLength={changeLength}
         />
         <ChangeTimer
           label="Session Length"
@@ -36,7 +53,8 @@ function App() {
           decrementId="session-decrement"
           incrementId="session-increment"
           lengthId="session-length"
-          timeLength="25"
+          timeLength={sessionTime}
+          changeLength={changeLength}
         />
       </div>
     </div>
@@ -50,18 +68,27 @@ function ChangeTimer({
   incrementId,
   lengthId,
   timeLength,
+  changeLength,
 }) {
   return (
     <div>
       <div id={labelId}>{label}</div>
       <div className="length-settings">
-        <div className="up-down-btn" id={decrementId}>
+        <div
+          className="up-down-btn"
+          id={decrementId}
+          onClick={() => changeLength("down", decrementId)}
+        >
           <i className="fa-solid fa-caret-down"></i>
         </div>
         <div className="countdown-time" id={lengthId}>
           {timeLength}
         </div>
-        <div className="up-down-btn" id={incrementId}>
+        <div
+          className="up-down-btn"
+          id={incrementId}
+          onClick={() => changeLength("up", incrementId)}
+        >
           <i className="fa-solid fa-caret-up"></i>
         </div>
       </div>
