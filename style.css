@@ -64,11 +64,34 @@
 
 /* BUTTONS STYLES */
 
+.control {
+  display: flex;
+  justify-content: space-around;
+  width: 70px;
+  transform: scale(1.5);
+  margin: 1.5rem;
+}
+
+.control i {
+  padding: 2px 5px;
+  border-radius: 5px;
+  background-color: #a4a9a9;
+}
+
+.control i:hover {
+  background-color: rgb(4, 209, 209);
+  color: white;
+}
+
+.control i:active {
+  color: rgb(0, 151, 151);
+  transform: scale(0.95);
+}
+
 .up-down-btn {
   padding: 0.2rem 0.8rem;
   border-radius: 5px;
   background-color: #a4a9a9;
-  border: 0 solid #e5e7eb;
 }
 
 .up-down-btn:hover {
